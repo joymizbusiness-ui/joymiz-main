@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Joymiz</title>
+    <meta name="description" content="Learn about Joymiz — our mission to make free, privacy-first tools accessible to everyone.">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #2563eb;
+            --primary-light: #3b82f6;
+            --bg-dark: #0a0f1a;
+            --text-light: #ffffff;
+            --text-muted: #94a3b8;
+            --border: rgba(255,255,255,0.08);
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            padding: 1rem 2rem;
+            display: flex; justify-content: space-between; align-items: center;
+            backdrop-filter: blur(20px);
+            background: rgba(10,15,26,0.7);
+            border-bottom: 1px solid var(--border);
+        }
+        nav.scrolled { background: rgba(10,15,26,0.95); padding: 0.75rem 2rem; }
+        .nav-logo {
+            font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #60a5fa, #a78bfa);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+        .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--text-light); }
+        .nav-cta { background: var(--primary); color: #fff !important; padding: 0.5rem 1.25rem; border-radius: 8px; }
+        .nav-cta:hover { background: var(--primary-light); }
+        .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+        .nav-hamburger span { width: 24px; height: 2px; background: var(--text-light); border-radius: 2px; }
+
+        .page-hero {
+            padding: 10rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .page-hero::before {
+            content: '';
+            position: absolute; inset: 0; z-index: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(37,99,235,0.12) 0%, transparent 60%);
+        }
+        .page-hero-content { position: relative; z-index: 1; }
+        .page-hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800; letter-spacing: -0.03em;
+            margin-bottom: 1rem;
+        }
+        .page-hero p { color: var(--text-muted); font-size: 1.15rem; max-width: 550px; margin: 0 auto; }
+
+        .content { max-width: 800px; margin: 0 auto; padding: 4rem 2rem 6rem; }
+
+        .content h2 {
+            font-size: 1.8rem; font-weight: 700; margin: 3rem 0 1rem;
+            letter-spacing: -0.02em;
+        }
+        .content h2:first-child { margin-top: 0; }
+        .content p { color: var(--text-muted); margin-bottom: 1.25rem; font-size: 1rem; line-height: 1.8; }
+        .content strong { color: var(--text-light); font-weight: 600; }
+
+        .values-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.25rem; margin: 2rem 0;
+        }
+        .value-card {
+            background: rgba(255,255,255,0.03); border: 1px solid var(--border);
+            border-radius: 16px; padding: 2rem;
+        }
+        .value-card h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+        .value-card p { font-size: 0.9rem; margin-bottom: 0; }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 3rem 2rem 2rem;
+            max-width: 1200px; margin: 0 auto;
+        }
+        .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        .footer-bottom p { color: var(--text-muted); font-size: 0.8rem; }
+        .footer-links { display: flex; gap: 1.5rem; }
+        .footer-links a { color: var(--text-muted); text-decoration: none; font-size: 0.8rem; transition: color 0.2s; }
+        .footer-links a:hover { color: var(--primary-light); }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; background: rgba(10,15,26,0.98); padding: 1.5rem; gap: 1rem; border-bottom: 1px solid var(--border); }
+            .nav-links.open { display: flex; }
+            .nav-hamburger { display: flex; }
+            .page-hero { padding: 8rem 1.5rem 3rem; }
+            .content { padding: 3rem 1.5rem 4rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav id="navbar">
+        <a href="index.html" class="nav-logo">JOYMIZ</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#products">Products</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <section class="page-hero">
+        <div class="page-hero-content">
+            <h1>About Joymiz</h1>
+            <p>We believe everyone deserves access to powerful productivity tools — without paying a dime or giving up their privacy.</p>
+        </div>
+    </section>
+
+    <div class="content">
+        <h2>Our Mission</h2>
+        <p>Joymiz was founded on a simple idea: <strong>productivity tools should be free, instant, and private.</strong> In a world where every app wants your email, your data, and your credit card, we chose a different path.</p>
+        <p>We build tools that run entirely in your browser. No servers storing your resumes, invoices, or QR codes. No accounts to manage. No upsells. Just clean, functional tools that do what they promise.</p>
+
+        <h2>How We Build</h2>
+        <p>Every Joymiz tool is <strong>built with AI assistance</strong> and designed with care. We leverage modern web technologies to create fast, reliable experiences that work on any device — from your phone to your desktop.</p>
+        <p>By keeping everything client-side, we ensure your data stays with you. It's the way the web was meant to work.</p>
+
+        <h2>Our Values</h2>
+        <div class="values-grid">
+            <div class="value-card">
+                <h3>🎯 Simplicity</h3>
+                <p>Every tool does one thing well. No bloat, no complexity — just results.</p>
+            </div>
+            <div class="value-card">
+                <h3>🔒 Privacy</h3>
+                <p>Your data never leaves your device. We don't track, store, or sell anything.</p>
+            </div>
+            <div class="value-card">
+                <h3>🌐 Accessibility</h3>
+                <p>Works on any device, any browser, anywhere. No downloads required.</p>
+            </div>
+            <div class="value-card">
+                <h3>💚 Generosity</h3>
+                <p>Every feature is free. No premium tiers, no hidden costs, no tricks.</p>
+            </div>
+        </div>
+
+        <h2>The Team</h2>
+        <p>Joymiz is built by a small, passionate team that believes technology should serve people — not the other way around. We're developers, designers, and dreamers committed to making the web a better place, one free tool at a time.</p>
+    </div>
+
+    <footer>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Joymiz. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+        navLinks.querySelectorAll('a').forEach(l => l.addEventListener('click', () => navLinks.classList.remove('open')));
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 50));
+    </script>
+</body>
+</html>
