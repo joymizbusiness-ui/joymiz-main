@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - Joymiz</title>
+    <meta name="description" content="Joymiz Terms of Service — simple, fair terms for using our free tools.">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #2563eb;
+            --primary-light: #3b82f6;
+            --bg-dark: #0a0f1a;
+            --text-light: #ffffff;
+            --text-muted: #94a3b8;
+            --border: rgba(255,255,255,0.08);
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            padding: 1rem 2rem;
+            display: flex; justify-content: space-between; align-items: center;
+            backdrop-filter: blur(20px);
+            background: rgba(10,15,26,0.7);
+            border-bottom: 1px solid var(--border);
+        }
+        nav.scrolled { background: rgba(10,15,26,0.95); padding: 0.75rem 2rem; }
+        .nav-logo {
+            font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #60a5fa, #a78bfa);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+        .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--text-light); }
+        .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+        .nav-hamburger span { width: 24px; height: 2px; background: var(--text-light); border-radius: 2px; }
+
+        .page-hero {
+            padding: 10rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .page-hero::before {
+            content: '';
+            position: absolute; inset: 0; z-index: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(37,99,235,0.12) 0%, transparent 60%);
+        }
+        .page-hero-content { position: relative; z-index: 1; }
+        .page-hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800; letter-spacing: -0.03em;
+            margin-bottom: 1rem;
+        }
+        .page-hero p { color: var(--text-muted); font-size: 1.15rem; max-width: 550px; margin: 0 auto; }
+
+        .content { max-width: 800px; margin: 0 auto; padding: 4rem 2rem 6rem; }
+        .content h2 { font-size: 1.5rem; font-weight: 700; margin: 3rem 0 1rem; letter-spacing: -0.02em; }
+        .content h2:first-child { margin-top: 0; }
+        .content p, .content li { color: var(--text-muted); margin-bottom: 1rem; font-size: 1rem; line-height: 1.8; }
+        .content strong { color: var(--text-light); font-weight: 600; }
+        .content ul { padding-left: 1.5rem; margin-bottom: 1rem; }
+        .content li { margin-bottom: 0.5rem; }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 3rem 2rem 2rem;
+            max-width: 1200px; margin: 0 auto;
+        }
+        .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        .footer-bottom p { color: var(--text-muted); font-size: 0.8rem; }
+        .footer-links { display: flex; gap: 1.5rem; }
+        .footer-links a { color: var(--text-muted); text-decoration: none; font-size: 0.8rem; transition: color 0.2s; }
+        .footer-links a:hover { color: var(--primary-light); }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; background: rgba(10,15,26,0.98); padding: 1.5rem; gap: 1rem; border-bottom: 1px solid var(--border); }
+            .nav-links.open { display: flex; }
+            .nav-hamburger { display: flex; }
+            .page-hero { padding: 8rem 1.5rem 3rem; }
+            .content { padding: 3rem 1.5rem 4rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav id="navbar">
+        <a href="index.html" class="nav-logo">JOYMIZ</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#products">Products</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <section class="page-hero">
+        <div class="page-hero-content">
+            <h1>Terms of Service</h1>
+            <p>Simple, fair terms. No legal jargon designed to confuse you.</p>
+        </div>
+    </section>
+
+    <div class="content">
+        <h2>1. Acceptance of Terms</h2>
+        <p>By accessing or using any Joymiz tool, you agree to these terms. If you don't agree, simply don't use the tools. It's that straightforward.</p>
+
+        <h2>2. What We Provide</h2>
+        <p>Joymiz provides free, browser-based productivity tools including but not limited to CV builders, invoice generators, and QR code creators. All tools are provided <strong>"as is"</strong> without warranty.</p>
+
+        <h2>3. Your Content</h2>
+        <p><strong>You own everything you create.</strong> We claim no rights, ownership, or interest in any content you generate using our tools. Your resumes, invoices, QR codes, and other outputs are 100% yours.</p>
+
+        <h2>4. Acceptable Use</h2>
+        <p>You agree not to:</p>
+        <ul>
+            <li>Use our tools for any illegal purpose</li>
+            <li>Attempt to disrupt or overload our hosting infrastructure</li>
+            <li>Reverse engineer or attempt to copy our tools</li>
+            <li>Use automated systems to access our tools without permission</li>
+        </ul>
+
+        <h2>5. Intellectual Property</h2>
+        <p>The Joymiz brand, website design, and tool interfaces are owned by Joymiz. You may not reproduce, distribute, or create derivative works without permission. However, you're welcome to <strong>use the tools freely</strong> for any personal or commercial purpose.</p>
+
+        <h2>6. Limitation of Liability</h2>
+        <p>Since our tools are free, <strong>we are not liable for any damages</strong> arising from the use of our tools. Always keep backups of important documents. We recommend saving your work regularly.</p>
+
+        <h2>7. Availability</h2>
+        <p>We strive to keep our tools available 24/7, but we make no guarantees. Tools may be temporarily unavailable for maintenance or due to circumstances beyond our control.</p>
+
+        <h2>8. Changes to Terms</h2>
+        <p>We may update these terms occasionally. Continued use of our tools after changes constitutes acceptance of the new terms. We'll always keep things fair.</p>
+
+        <h2>9. Contact</h2>
+        <p>Questions about these terms? Visit our <a href="contact.html" style="color: var(--primary-light);">contact page</a>.</p>
+
+        <p style="margin-top: 3rem; color: var(--text-muted); font-size: 0.85rem;">Last updated: August 2026</p>
+    </div>
+
+    <footer>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Joymiz. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+        navLinks.querySelectorAll('a').forEach(l => l.addEventListener('click', () => navLinks.classList.remove('open')));
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 50));
+    </script>
+</body>
+</html>
