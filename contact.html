@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Joymiz</title>
+    <meta name="description" content="Get in touch with the Joymiz team. We'd love to hear from you.">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #2563eb;
+            --primary-light: #3b82f6;
+            --primary-dark: #1d4ed8;
+            --bg-dark: #0a0f1a;
+            --text-light: #ffffff;
+            --text-muted: #94a3b8;
+            --border: rgba(255,255,255,0.08);
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            padding: 1rem 2rem;
+            display: flex; justify-content: space-between; align-items: center;
+            backdrop-filter: blur(20px);
+            background: rgba(10,15,26,0.7);
+            border-bottom: 1px solid var(--border);
+        }
+        nav.scrolled { background: rgba(10,15,26,0.95); padding: 0.75rem 2rem; }
+        .nav-logo {
+            font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #60a5fa, #a78bfa);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+        .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--text-light); }
+        .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+        .nav-hamburger span { width: 24px; height: 2px; background: var(--text-light); border-radius: 2px; }
+
+        .page-hero {
+            padding: 10rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .page-hero::before {
+            content: '';
+            position: absolute; inset: 0; z-index: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(37,99,235,0.12) 0%, transparent 60%);
+        }
+        .page-hero-content { position: relative; z-index: 1; }
+        .page-hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800; letter-spacing: -0.03em;
+            margin-bottom: 1rem;
+        }
+        .page-hero p { color: var(--text-muted); font-size: 1.15rem; max-width: 550px; margin: 0 auto; }
+
+        .contact-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 2rem 6rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .contact-info p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.25rem;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            text-decoration: none;
+            color: var(--text-light);
+            transition: all 0.2s;
+        }
+
+        .contact-method:hover {
+            background: rgba(255,255,255,0.06);
+            border-color: rgba(255,255,255,0.12);
+            transform: translateY(-2px);
+        }
+
+        .contact-method-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: rgba(37,99,235,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .contact-method-text h3 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.15rem;
+        }
+
+        .contact-method-text p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0;
+        }
+
+        .contact-form {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2rem;
+        }
+
+        .contact-form h2 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            font-family: inherit;
+            transition: border-color 0.2s;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255,255,255,0.25);
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 0.875rem;
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+
+        .form-submit:hover {
+            background: var(--primary-light);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(37,99,235,0.3);
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 3rem 2rem 2rem;
+            max-width: 1200px; margin: 0 auto;
+        }
+        .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        .footer-bottom p { color: var(--text-muted); font-size: 0.8rem; }
+        .footer-links { display: flex; gap: 1.5rem; }
+        .footer-links a { color: var(--text-muted); text-decoration: none; font-size: 0.8rem; transition: color 0.2s; }
+        .footer-links a:hover { color: var(--primary-light); }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; background: rgba(10,15,26,0.98); padding: 1.5rem; gap: 1rem; border-bottom: 1px solid var(--border); }
+            .nav-links.open { display: flex; }
+            .nav-hamburger { display: flex; }
+            .page-hero { padding: 8rem 1.5rem 3rem; }
+            .contact-section {
+                grid-template-columns: 1fr;
+                padding: 3rem 1.5rem 4rem;
+                gap: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav id="navbar">
+        <a href="index.html" class="nav-logo">JOYMIZ</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#products">Products</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <section class="page-hero">
+        <div class="page-hero-content">
+            <h1>Get in Touch</h1>
+            <p>Have a question, suggestion, or just want to say hello? We'd love to hear from you.</p>
+        </div>
+    </section>
+
+    <div class="contact-section">
+        <div class="contact-info">
+            <h2>Let's connect</h2>
+            <p>Whether you found a bug, have a feature request, or want to collaborate — we're all ears. We read every message.</p>
+
+            <div class="contact-methods">
+                <a href="mailto:hello@joymiz.com" class="contact-method">
+                    <div class="contact-method-icon">✉️</div>
+                    <div class="contact-method-text">
+                        <h3>Email</h3>
+                        <p>hello@joymiz.com</p>
+                    </div>
+                </a>
+
+                <a href="https://twitter.com/joymiz" target="_blank" rel="noopener" class="contact-method">
+                    <div class="contact-method-icon">𝕏</div>
+                    <div class="contact-method-text">
+                        <h3>Twitter / X</h3>
+                        <p>@joymiz</p>
+                    </div>
+                </a>
+
+                <a href="https://github.com/joymiz" target="_blank" rel="noopener" class="contact-method">
+                    <div class="contact-method-icon">⌨️</div>
+                    <div class="contact-method-text">
+                        <h3>GitHub</h3>
+                        <p>github.com/joymiz</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+            <h2>Send a message</h2>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Your name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="you@example.com" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" placeholder="How can we help?" required></textarea>
+            </div>
+            <button type="submit" class="form-submit">Send Message →</button>
+        </form>
+    </div>
+
+    <footer>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Joymiz. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+        navLinks.querySelectorAll('a').forEach(l => l.addEventListener('click', () => navLinks.classList.remove('open')));
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 50));
+
+        function handleSubmit(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('.form-submit');
+            btn.textContent = 'Message Sent!';
+            btn.style.background = '#16a34a';
+            setTimeout(() => {
+                btn.textContent = 'Send Message →';
+                btn.style.background = '';
+                e.target.reset();
+            }, 2500);
+        }
+    </script>
+</body>
+</html>
